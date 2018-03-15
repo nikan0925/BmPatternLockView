@@ -12,6 +12,7 @@
             <enum name="height_bias" value="2"/>
         </attr>
         <attr name="normalStateColor" format="color"/>
+        <attr name="regularStateColor" format="color"/>
         <attr name="correctStateColor" format="color"/>
         <attr name="wrongStateColor" format="color"/>
         <attr name="dotAnimationDuration" format="integer"/>

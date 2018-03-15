@@ -117,6 +117,7 @@ public class PatternLockView extends View {
     private boolean mAspectRatioEnabled;
     private int mAspectRatio;
     private int mNormalStateColor;
+    private int mRegularStateColor;
     private int mWrongStateColor;
     private int mCorrectStateColor;
     private int mPathWidth;
@@ -176,6 +177,8 @@ public class PatternLockView extends View {
                 typedArray.getInt(R.styleable.PatternLockView_aspectRatio, ASPECT_RATIO_SQUARE);
             mPathWidth = (int) typedArray.getDimension(R.styleable.PatternLockView_pathWidth,
                 ResourceUtils.getDimensionInPx(getContext(), R.dimen.pattern_lock_path_width));
+            mRegularStateColor = typedArray.getColor(R.styleable.PatternLockView_regularStateColor,
+                ResourceUtils.getColor(getContext(), R.color.white));
             mNormalStateColor = typedArray.getColor(R.styleable.PatternLockView_normalStateColor,
                 ResourceUtils.getColor(getContext(), R.color.white));
             mCorrectStateColor = typedArray.getColor(R.styleable.PatternLockView_correctStateColor,
@@ -507,6 +510,10 @@ public class PatternLockView extends View {
         return mWrongStateColor;
     }
 
+    public int getRegularStateColor() {
+        return mRegularStateColor;
+    }
+
     public int getCorrectStateColor() {
         return mCorrectStateColor;
     }
@@ -609,6 +616,10 @@ public class PatternLockView extends View {
 
     public void setWrongStateColor(@ColorInt int wrongStateColor) {
         mWrongStateColor = wrongStateColor;
+    }
+
+    public void setRegularStateColor(@ColorInt int regularStateColor) {
+        mRegularStateColor = regularStateColor;
     }
 
     public void setCorrectStateColor(@ColorInt int correctStateColor) {
@@ -1123,8 +1134,10 @@ public class PatternLockView extends View {
     }
 
     private int getCurrentColor(boolean partOfPattern) {
-        if (!partOfPattern || mInStealthMode || mPatternInProgress) {
+        if (!partOfPattern || mInStealthMode) {
             return mNormalStateColor;
+        } else if (mPatternInProgress) {
+            return mRegularStateColor;
         } else if (mPatternViewMode == WRONG) {
             return mWrongStateColor;
         } else if (mPatternViewMode == CORRECT || mPatternViewMode == AUTO_DRAW) {

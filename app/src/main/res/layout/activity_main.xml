@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mine_shaft"
+    android:orientation="vertical">
+
+    <com.bmqb.patternlockview.PatternPreviewView
+        android:id="@+id/preview_view"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="104dp"
+        app:pDotNormalSize="6dp"/>
+
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="26dp"
+        android:fontFamily="sans-serif-thin"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="请绘制新的解锁手势"
+        android:textColor="@color/white"
+        android:textSize="20sp"/>
+
+    <com.bmqb.patternlockview.PatternLockView
+        android:id="@+id/patter_lock_view"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        app:aspectRatio="square"
+        app:aspectRatioEnabled="true"
+        app:dotAnimationDuration="150"
+        app:dotCount="3"/>
+
+</LinearLayout>
